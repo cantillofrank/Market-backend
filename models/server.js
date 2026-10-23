@@ -1,5 +1,6 @@
 import express from "express";  
 import 'dotenv/config';
+import cors  from "cors";
 
  export class Server {  
 
@@ -31,7 +32,7 @@ import 'dotenv/config';
         });
         this.app.delete('/api', (req, res) => {
             res.json({
-                
+
                 message: 'DELETE - Server'
             })
         });
@@ -39,6 +40,7 @@ import 'dotenv/config';
 
     //Metodo 3 de mi Clase Server
     middlewares() {
+        this.app.use(cors());
         this.app.use(express.static('public'));
         this.app.use(express.json());
     }
